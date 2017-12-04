@@ -1,9 +1,11 @@
 body{
-    background-color: #262626;
+    background-color: #111111;
 }
 
 .light-holder{
-    margin: 5px 20px;
+    margin: 5px auto;
+    position: relative;
+    width: 100px;
 }
 
 .light-holder .light-title{
@@ -16,7 +18,18 @@ body{
 .light-holder .orb{
     height: 100px;
     width: 100px;
-    background-color: hsl(0, 0%, 0%);
+    /*background-color: hsl(0, 0%, 0%);*/
     border: solid white 2px;
     border-radius: 50%;
+    cursor: pointer;
+
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 60px;
+    margin-top: 16px;
+}
+
+.col-md-4{
+    text-align: center;
 }

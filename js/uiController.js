@@ -11,6 +11,7 @@ function uiLight(obj){
     this.lightHolder.append("<div class='orb'></div>")
     this.lightHolder.append("<div class='light-title'>" + this.name + "</div>")
     this.orb = this.lightHolder.find(".orb");
+    this.orb.append("<i class='fa fa-lightbulb-o fa-2' aria-hidden='true'></i>");
 
     this.updateUI();
 
@@ -34,16 +35,23 @@ uiLight.prototype.updateUI = function(){
 
 uiLight.prototype.updateColor = function(){
     var color = "hsl(" + this.obj.color.hue + ", 100%, " + (100 - ((this.obj.color.saturation*100)/2)) + "%)";
-    this.orb.css("background-color", color);
+    this.orb.css("border", "solid " + color + " 4px");
+    //this.orb.css("background-color", color);
 };
 
 uiLight.prototype.updateGlow = function(){
     var glow = "hsla(" + this.obj.color.hue + ", 100%, " + (100 - ((this.obj.color.saturation*100)/2)) + "%, " + this.obj.brightness + ")";
     var shadowWidth = 0;
+    var textColor = "#9d9d9d";
     console.log(this.obj.power);
-    if (this.obj.power == 'on') shadowWidth = 50;
+    if (this.obj.power == 'on') {
+        shadowWidth = 50;
+        textColor = "white";
+    }
     var boxShadow = "0 0 " + shadowWidth + "px " + glow;
     this.orb.css("-moz-box-shadow", boxShadow);
     this.orb.css("-webkit-box-shadow", boxShadow);
     this.orb.css("box-shadow", boxShadow);
+
+    this.orb.css("color", textColor);
 };
