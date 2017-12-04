@@ -1,9 +1,8 @@
-function uiLight(lightObj){
-    this.id = lightObj.id;
-    this.name = lightObj.label;
-    this.color = lightObj.color;
+function uiLight(obj){
+    this.id = obj.id;
+    this.name = obj.label;
 
-    this.lightObj = lightObj;
+    this.obj = obj;
     var light = this;
 
 
@@ -13,54 +12,36 @@ function uiLight(lightObj){
     this.lightHolder.append("<div class='light-title'>" + this.name + "</div>")
     this.orb = this.lightHolder.find(".orb");
 
-    this.setColor();
-    this.glow();
+    this.updateUI();
 
     this.orb.click(function(){
-        console.log(light.lightObj);
         var power = 'on';
-        if (light.lightObj.power == 'on') power = 'off';
-        setState(light.id, 'power', power, function(data){
-            light.lightObj.power = power;
-            light.glow();
-        });
+        if (light.obj.power == 'on') power = 'off';
+        setState(light.id, { power: power });
     });
-
-
-    return;
-    $.ajax(url + "all/state" , {
-        method: 'PUT',
-        headers: {
-            'Authorization': 'Bearer ' + token
-        },
-        contentType: "application/x-www-form-urlencoded",
-        success: function(response){
-            var data = response.responseText;
-            console.log(response);
-        },
-        error: function(response){
-            var data = response.responseText;
-            console.log(data);
-        },
-        data: {
-            power: 'off'
-        }
-    })
-
-
-
-
 }
 
-uiLight.prototype.setColor = function(){
-    var color = "hsl(" + this.color.hue + ", 100%, " + (100 - ((this.color.saturation*100)/2)) + "%)";
+
+uiLight.prototype.setObj = function(obj){
+    this.obj = obj;
+    this.updateUI();
+};
+
+uiLight.prototype.updateUI = function(){
+    this.updateColor();
+    this.updateGlow();
+};
+
+uiLight.prototype.updateColor = function(){
+    var color = "hsl(" + this.obj.color.hue + ", 100%, " + (100 - ((this.obj.color.saturation*100)/2)) + "%)";
     this.orb.css("background-color", color);
 };
 
-uiLight.prototype.glow = function(){
-    var glow = "hsla(" + this.color.hue + ", 100%, " + (100 - ((this.color.saturation*100)/2)) + "%, " + this.lightObj.brightness + ")";
+uiLight.prototype.updateGlow = function(){
+    var glow = "hsla(" + this.obj.color.hue + ", 100%, " + (100 - ((this.obj.color.saturation*100)/2)) + "%, " + this.obj.brightness + ")";
     var shadowWidth = 0;
-    if (this.lightObj.power == 'on') shadowWidth = 50
+    console.log(this.obj.power);
+    if (this.obj.power == 'on') shadowWidth = 50;
     var boxShadow = "0 0 " + shadowWidth + "px " + glow;
     this.orb.css("-moz-box-shadow", boxShadow);
     this.orb.css("-webkit-box-shadow", boxShadow);

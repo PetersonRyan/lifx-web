@@ -1,4 +1,7 @@
 var token = "";
+var lights = new Object();
+
+
 $(document).ready(function(){
 
     var modalToken = $("#modal-token");
@@ -37,3 +40,46 @@ $(document).ready(function(){
 
     });
 });
+
+
+function initiate(){
+    //Get all lights, create a new ui element for them and new object
+    getLights("all", function(data){
+        console.log(data);
+        var lightArr = JSON.parse(data)
+        $.each(lightArr, function(k,v){
+            console.log(k);
+            console.log(v);
+            lights[v.id] = new uiLight(v);
+        });
+    });
+    return;
+    //Not doing this right now. Will fix later
+    setInterval(function(){
+        getLights(function(data){
+            lights = JSON.parse(data);
+            $.each(lights, function(k,v){
+                var hue = v.color.hue;
+                var saturation = v.color.saturation;
+                var kelvin = v.color.kelvin;
+                var brightness = v.brightness;
+                var color = "hsl(" + hue + ", 100%, " + (100 - ((saturation*100)/2)) + "%)";
+                var glow = "hsla(" + hue + ", 100%, " + (100 - ((saturation*100)/2)) + "%, " + brightness + ")";
+                console.log(color);
+                $(".light").css("background-color", color);
+                var boxShadow = "0 0 10px " + color;
+                if (v.power == "on"){
+                    console.log(glow)
+                    boxShadow = "0 0 50px 5px " + glow;
+                }
+                else {
+                    boxShadow = "0 0 0px " + color;
+                }
+                $(".light").css("-moz-box-shadow", boxShadow);
+                $(".light").css("-webkit-box-shadow", boxShadow);
+                $(".light").css("box-shadow", boxShadow);
+                //hsla(318, 100%, 50%, 1)
+            });
+        });
+    }, 5000);
+}
