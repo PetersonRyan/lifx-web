@@ -1,0 +1,22 @@
+body{
+    background-color: #262626;
+}
+
+.light-holder{
+    margin: 5px 20px;
+}
+
+.light-holder .light-title{
+    text-align: center;
+    padding: 5px;
+    margin-top: 20px;
+    color: white;
+}
+
+.light-holder .orb{
+    height: 100px;
+    width: 100px;
+    background-color: hsl(0, 0%, 0%);
+    border: solid white 2px;
+    border-radius: 50%;
+}
