@@ -17,7 +17,7 @@ $(document).ready(function(){
     //On click, validate the token, if valid continue with initialization, otherwise prompt for token again.
     modalToken.find('button').click(function(){
         var field = $("#token-input");
-        localStorage.token = field.val();
+        localStorage.token = field.val(); //Store token
 
         token = localStorage.token;
         getLights("all", function(data){
@@ -33,7 +33,7 @@ $(document).ready(function(){
                 field.parent().addClass('has-danger');
             }
             else {
-                console.log(status)
+                console.log(status);
                 console.log(data);
             }
         });
