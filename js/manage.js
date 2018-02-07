@@ -22,7 +22,7 @@ $(document).ready(function(){
         token = localStorage.token;
         getLights("all", function(data){
             modalToken.modal('hide');
-            initiate();
+            initiate(data);
         }, function(status, data){
             if (status == 401) {
                 //alert("Token not valid.");
@@ -42,17 +42,22 @@ $(document).ready(function(){
 });
 
 
-function initiate(){
+function initiate(lightJSON){
+
     //Get all lights, create a new ui element for them and new object
-    getLights("all", function(data){
-        console.log(data);
-        var lightArr = JSON.parse(data)
+    var operateLights = function(lightJSONtext){
+        var lightArr = JSON.parse(lightJSONtext)
         $.each(lightArr, function(k,v){
             console.log(k);
             console.log(v);
             lights[v.id] = new uiLight(v);
         });
-    });
+    }
+
+    if (lightJSON) operateLights(lightJSON);
+    else
+        getLights("all", function(data){ operateLights(data); });
+
     return;
     //Not doing this right now. Will fix later
     setInterval(function(){

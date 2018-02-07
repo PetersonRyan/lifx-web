@@ -2,10 +2,13 @@ body{
     background-color: #111111;
 }
 
+
 .color-picker{
     width: 300px;
     height: 20px;
-    border-radius: 30px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
 
     background: rgba(255,38,0,1);
     background: -moz-linear-gradient(left, rgba(255,38,0,1) 0%, rgba(255,132,0,1) 7%, rgba(255,242,0,1) 13%, rgba(196,255,0,1) 20%, rgba(145,255,0,1) 27%, rgba(0,255,17,1) 35%, rgba(0,255,221,1) 53%, rgba(0,187,255,1) 62%, rgba(30,0,255,1) 71%, rgba(102,0,255,1) 78%, rgba(119,0,255,1) 84%, rgba(183,0,255,1) 91%, rgba(255,0,0,1) 99%, rgba(255,0,0,1) 100%);
@@ -17,13 +20,12 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff2600', endColorstr='#ff0000', GradientType=1 );
 }
 
-.slider{
-    height: 20px;
-    width: 20px;
-    background-color: rgba(240,240,250,0.8);
+.color-picker .ui-slider-handle {
+    height: 28px;
+    width: 28px;
+    background: rgba(128,128,128,0.7);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     border-radius: 50%;
-    border: solid rgba(200, 200, 200, 0.9) 5px;
-
-    position: absolute;
-    left: 0px;
 }
+.color-picker .ui-slider-range { background: rgba(0,0,0,0); }

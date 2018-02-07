@@ -10,8 +10,21 @@ function uiLight(obj){
     this.lightHolder = $("#" + this.id);
     this.lightHolder.append("<div class='orb'></div>")
     this.lightHolder.append("<div class='light-title'>" + this.name + "</div>")
+    this.lightHolder.append("<button type='button' class='update-light-button btn btn-primary'>Update Light</button>")
     this.orb = this.lightHolder.find(".orb");
     this.orb.append("<i class='fa fa-lightbulb-o fa-2' aria-hidden='true'></i>");
+
+    this.updateButton = this.lightHolder.find(".update-light-button");
+    var orb = this.orb;
+    this.updateButton.click(function(){
+        var toColorrgb = $(orb).children('.fa').css('color');
+        toColorrgb = toColorrgb.substring(4, toColorrgb.length - 1);
+        var rgbArr = JSON.parse('[' + toColorrgb + ']')
+        console.log(rgbArr)
+        var hex = '#' + fullColorHex(rgbArr[0], rgbArr[1], rgbArr[2]);
+        console.warn(hex)
+        setState(light.id, { color: hex });
+    });
 
     this.updateUI();
 
