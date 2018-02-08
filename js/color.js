@@ -1,17 +1,30 @@
 $(document).ready(function(){
+        var waiting = setInterval(function(){
+            if (lightsLoaded === true){
+                $(".color-picker").slider({
+                    orientation: "horizontal",
+                    range: "min",
+                    max: 360,
+                    value: 127,
+                    slide: colorPickerChange,
+                    change: colorPickerChange
+                });
+                $('.lightness-picker').slider({
+                    orientation: "verticle",
+                    range: "min",
+                    max: 360,
+                    value: 127,
+                    slide: lightnessPickerChange,
+                    change: lightnessPickerChange
+                })
+                clearInterval(waiting);
+            }
+        }, 10);
 
-        $(".color-picker").slider({
-            orientation: "horizontal",
-            range: "min",
-            max: 360,
-            value: 127,
-            slide: refresh,
-            change: refresh
-        });
 });
 
-function refresh(light){
-
+function colorPickerChange(light){
+    var lightBulb = $(this).parent('.light-holder').find('.light-bulb');
     if (!$(light).hasClass()) light = this;
 
     var hue = $(light).slider("value"); //hue
@@ -19,8 +32,11 @@ function refresh(light){
     //console.log(hue)
     //return;
     var rgb = hsvtorgb(hue,1,1);
-    $('.orb i').css('color', '#' +  fullColorHex(rgb[0],rgb[1],rgb[2]))
+    lightBulb.css('color', '#' +  fullColorHex(rgb[0],rgb[1],rgb[2]))
+}
 
+function lightnessPickerChange(light){
+    var lightBulb = $(this).parent('.light-holder').find('.light-bulb');
 }
 
 function hsvtorgb(h, s, v){

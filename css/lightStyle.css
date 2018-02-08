@@ -31,3 +31,9 @@
 .col-md-4{
     text-align: center;
 }
+
+.color-picker{ display: none; }
+
+.light-title:active .color-picker, .light-title:focus .color-picker, .light-title:hover .color-picker{
+    display: block;
+}
