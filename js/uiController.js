@@ -6,27 +6,23 @@ function uiLight(obj){
     var light = this;
 
 
-    $(".light-row").append("<div class='light-holder' id='" + this.id + "'></div>")
-    this.lightHolder = $("#" + this.id);
-    this.lightHolder.append("<div class='light-and-title'></div>")
-    this.lightAndTitle = this.lightHolder.find('.light-and-title');
-    this.lightAndTitle.append("<div class='orb'></div>")
-    this.lightAndTitle.append("<div class='light-title'>" + this.name + "</div>")
-    //this.lightHolder.append("<button type='button' class='update-light-button btn btn-primary'>Update Light</button>")
-    var lightTemplate = "<div class='light-holder' id='" + this.id + "'>" +
-            "<div class='row'>" +
-                "<div class='col-sm-3'><div class='lightness-picker'></div></div>" +
-                "<div class='col-sm-6 light-and-title'>" +
-                    "<div class='orb'></div><div class='light-title'>" + this.name + "</div>" +
-                "</div>" +
-                "<div class='col-sm-3'><div class='other-picker'></div></div>" +
-            "</div>" +
-            "<div class='row'><div class='color-picker'></div></div>" +
-        "</div>"
-    this.lightHolder.append("<div class='color-picker'></div>")
 
-    this.orb = this.lightHolder.find(".orb");
-    this.orb.append("<i class='fa fa-lightbulb-o fa-2 light-bulb' aria-hidden='true'></i>");
+
+    // $(".light-row").append("<div class='light-holder col-md-4' id='" + this.id + "'></div>");
+    // this.lightHolder = $("#" + this.id);
+    // this.lightHolder.append("<div class='row'></div>")
+    // this.lightHolder.row = $(this.lightHolder).children('.row');
+    // this.lightHolder.append("<div class='light-and-title text-center'></div>");
+    // this.lightAndTitle = this.lightHolder.find('.light-and-title');
+    // this.lightAndTitle.append("<div class='orb'></div>");
+    // this.lightAndTitle.append("<div class='light-title'>" + this.name + "</div>");
+    // //this.lightHolder.append("<button type='button' class='update-light-button btn btn-primary'>Update Light</button>")
+    //
+    //
+    // this.lightHolder.append("<div class='color-picker'></div>");
+    //
+    // this.orb = this.lightHolder.find(".orb");
+    // this.orb.append("<i class='fa fa-lightbulb-o fa-2 light-bulb' aria-hidden='true'></i>");
 
     //this.updateButton = this.lightHolder.find(".update-light-button");
     var orb = this.orb;
@@ -40,9 +36,33 @@ function uiLight(obj){
     //     setState(light.id, { color: hex });
     // });
 
+
+    var lightTemplate = "<div class='light-holder col-md-4' id='" + this.id + "'>" +
+        "<div class='row'>" +
+            "<div class='col-sm-3'>" +
+                "<div class='lightness-picker'></div>" +
+            "</div>" +
+
+            "<div class='col-sm-6 light-and-title text-center'>" +
+            "<div class='orb'>" +
+                "<i class='fa fa-lightbulb-o fa-2 light-bulb' aria-hidden='true'></i>" +
+            "</div>" +
+                "<div class='light-title'>" + this.name + "</div>" +
+            "</div>" +
+
+            "<div class='col-sm-3'>" +
+                "<div class='other-picker'></div>" +
+            "</div>" +
+        "</div>" +
+        "<div class='row'><div class='color-picker'></div></div>" +
+        "</div>";
+    $(".light-row").append(lightTemplate);
+    this.jobj = $("#" + this.id);
+
+
     this.updateUI();
 
-    this.orb.click(function(){
+    $(this.jobj).find('.orb').click(function(){
         var power = 'on';
         if (light.obj.power == 'on') power = 'off';
         setState(light.id, { power: power });
@@ -62,7 +82,7 @@ uiLight.prototype.updateUI = function(){
 
 uiLight.prototype.updateColor = function(){
     var color = "hsl(" + this.obj.color.hue + ", 100%, " + (100 - ((this.obj.color.saturation*100)/2)) + "%)";
-    this.orb.css("border", "solid " + color + " 4px");
+    $(this.jobj).find('.orb').css("border", "solid " + color + " 4px");
     //this.orb.css("background-color", color);
 };
 
@@ -76,16 +96,17 @@ uiLight.prototype.updateGlow = function(){
         textColor = "white";
     }
     var boxShadow = "0 0 " + shadowWidth + "px " + glow;
-    this.orb.css("-moz-box-shadow", boxShadow);
-    this.orb.css("-webkit-box-shadow", boxShadow);
-    this.orb.css("box-shadow", boxShadow);
+    $(this.jobj).find('.orb').css("-moz-box-shadow", boxShadow);
+    $(this.jobj).find('.orb').css("-webkit-box-shadow", boxShadow);
+    $(this.jobj).find('.orb').css("box-shadow", boxShadow);
 
-    this.orb.css("color", textColor);
+    $(this.jobj).find('.orb').css("color", textColor);
 };
 
 $('.light-row').on('click', '.light-title, .color-picker', function(e){
     e.stopPropagation(); //stop document.click from closing it
-    var currentColorPicker = $(this).parent('.light-holder').find('.color-picker');
+    var currentColorPicker = $(this).closest('.light-holder').find('.color-picker');
+    console.log(currentColorPicker);
 
     $('.color-picker').filter(function(){
         if ($(this).css('display') !== 'none') $(this).hide();

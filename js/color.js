@@ -10,13 +10,13 @@ $(document).ready(function(){
                     change: colorPickerChange
                 });
                 $('.lightness-picker').slider({
-                    orientation: "verticle",
+                    orientation: "vertical",
                     range: "min",
                     max: 360,
                     value: 127,
                     slide: lightnessPickerChange,
                     change: lightnessPickerChange
-                })
+                });
                 clearInterval(waiting);
             }
         }, 10);
@@ -24,7 +24,7 @@ $(document).ready(function(){
 });
 
 function colorPickerChange(light){
-    var lightBulb = $(this).parent('.light-holder').find('.light-bulb');
+    var lightBulb = $(this).closest('.light-holder').find('.light-bulb');
     if (!$(light).hasClass()) light = this;
 
     var hue = $(light).slider("value"); //hue
