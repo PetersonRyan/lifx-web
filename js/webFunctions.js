@@ -1,6 +1,7 @@
 var defaultURL = "https://api.lifx.com/v1/lights/";
 
 function setState(selector, states){
+    console.log(states)
     PUT(defaultURL + selector + "/state", states, function(data, b){
         console.log(data.results);
         var lightList = new Object();
@@ -16,6 +17,7 @@ function setState(selector, states){
                         lights[selector].setObj(obj);
                         break;
                     case 'color':
+                        obj.
                         //TODO
                         break;
                     case 'brightness':

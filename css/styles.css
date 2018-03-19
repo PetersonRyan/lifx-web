@@ -1,2 +1,35 @@
-body{background-color:#111}.color-picker{width:300px;height:20px;-webkit-border-radius:20px;-moz-border-radius:20px;border-radius:20px;background:#ff2600;background:-moz-linear-gradient(left, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #0f1 35%, #0fd 53%, #0bf 62%, #1e00ff 71%, #60f 78%, #70f 84%, #b700ff 91%, red 99%, red 100%);background:-webkit-gradient(left top, right top, color-stop(0%, #ff2600), color-stop(7%, #ff8400), color-stop(13%, #fff200), color-stop(20%, #c4ff00), color-stop(27%, #91ff00), color-stop(35%, #0f1), color-stop(53%, #0fd), color-stop(62%, #0bf), color-stop(71%, #1e00ff), color-stop(78%, #60f), color-stop(84%, #70f), color-stop(91%, #b700ff), color-stop(99%, red), color-stop(100%, red));background:-webkit-linear-gradient(left, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #0f1 35%, #0fd 53%, #0bf 62%, #1e00ff 71%, #60f 78%, #70f 84%, #b700ff 91%, red 99%, red 100%);background:-o-linear-gradient(left, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #0f1 35%, #0fd 53%, #0bf 62%, #1e00ff 71%, #60f 78%, #70f 84%, #b700ff 91%, red 99%, red 100%);background:-ms-linear-gradient(left, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #0f1 35%, #0fd 53%, #0bf 62%, #1e00ff 71%, #60f 78%, #70f 84%, #b700ff 91%, red 99%, red 100%);background:linear-gradient(to right, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #0f1 35%, #0fd 53%, #0bf 62%, #1e00ff 71%, #60f 78%, #70f 84%, #b700ff 91%, red 99%, red 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff2600', endColorstr='#ff0000', GradientType=1 )}.color-picker .ui-slider-handle{height:28px;width:28px;background:rgba(128,128,128,0.7);-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%}.color-picker .ui-slider-range{background:transparent}.no-shadow{border-color:rgba(126,239,104,0);box-shadow:0 1px 1px transparent inset,0 0 8px rgba(126,239,104,0);outline:0 none}
+body {
+  background-color: #111111; }
+
+.color-picker {
+  width: 300px;
+  height: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  background: #ff2600;
+  background: -moz-linear-gradient(left, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #00ff11 35%, #00ffdd 53%, #00bbff 62%, #1e00ff 71%, #6600ff 78%, #7700ff 84%, #b700ff 91%, red 99%, red 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, #ff2600), color-stop(7%, #ff8400), color-stop(13%, #fff200), color-stop(20%, #c4ff00), color-stop(27%, #91ff00), color-stop(35%, #00ff11), color-stop(53%, #00ffdd), color-stop(62%, #00bbff), color-stop(71%, #1e00ff), color-stop(78%, #6600ff), color-stop(84%, #7700ff), color-stop(91%, #b700ff), color-stop(99%, red), color-stop(100%, red));
+  background: -webkit-linear-gradient(left, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #00ff11 35%, #00ffdd 53%, #00bbff 62%, #1e00ff 71%, #6600ff 78%, #7700ff 84%, #b700ff 91%, red 99%, red 100%);
+  background: -o-linear-gradient(left, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #00ff11 35%, #00ffdd 53%, #00bbff 62%, #1e00ff 71%, #6600ff 78%, #7700ff 84%, #b700ff 91%, red 99%, red 100%);
+  background: -ms-linear-gradient(left, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #00ff11 35%, #00ffdd 53%, #00bbff 62%, #1e00ff 71%, #6600ff 78%, #7700ff 84%, #b700ff 91%, red 99%, red 100%);
+  background: linear-gradient(to right, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #00ff11 35%, #00ffdd 53%, #00bbff 62%, #1e00ff 71%, #6600ff 78%, #7700ff 84%, #b700ff 91%, red 99%, red 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff2600', endColorstr='#ff0000', GradientType=1 ); }
+
+.color-picker .ui-slider-handle {
+  height: 28px;
+  width: 28px;
+  background: rgba(128, 128, 128, 0.7);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%; }
+
+.color-picker .ui-slider-range {
+  background: rgba(0, 0, 0, 0); }
+
+.no-shadow {
+  border-color: rgba(126, 239, 104, 0);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0) inset, 0 0 8px rgba(126, 239, 104, 0);
+  outline: 0 none; }
+
 /*# sourceMappingURL=styles.css.map */

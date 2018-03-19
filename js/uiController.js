@@ -5,37 +5,7 @@ function uiLight(obj){
     this.obj = obj;
     var light = this;
 
-
-
-
-    // $(".light-row").append("<div class='light-holder col-md-4' id='" + this.id + "'></div>");
-    // this.lightHolder = $("#" + this.id);
-    // this.lightHolder.append("<div class='row'></div>")
-    // this.lightHolder.row = $(this.lightHolder).children('.row');
-    // this.lightHolder.append("<div class='light-and-title text-center'></div>");
-    // this.lightAndTitle = this.lightHolder.find('.light-and-title');
-    // this.lightAndTitle.append("<div class='orb'></div>");
-    // this.lightAndTitle.append("<div class='light-title'>" + this.name + "</div>");
-    // //this.lightHolder.append("<button type='button' class='update-light-button btn btn-primary'>Update Light</button>")
-    //
-    //
-    // this.lightHolder.append("<div class='color-picker'></div>");
-    //
-    // this.orb = this.lightHolder.find(".orb");
-    // this.orb.append("<i class='fa fa-lightbulb-o fa-2 light-bulb' aria-hidden='true'></i>");
-
-    //this.updateButton = this.lightHolder.find(".update-light-button");
     var orb = this.orb;
-    // this.updateButton.click(function(){
-    //     var toColorrgb = $(orb).children('.fa').css('color');
-    //     toColorrgb = toColorrgb.substring(4, toColorrgb.length - 1);
-    //     var rgbArr = JSON.parse('[' + toColorrgb + ']')
-    //     console.log(rgbArr)
-    //     var hex = '#' + fullColorHex(rgbArr[0], rgbArr[1], rgbArr[2]);
-    //     console.warn(hex)
-    //     setState(light.id, { color: hex });
-    // });
-
 
     var lightTemplate = "<div class='light-holder col-md-4' id='" + this.id + "'>" +
         "<div class='row'>" +
@@ -44,10 +14,11 @@ function uiLight(obj){
             "</div>" +
 
             "<div class='col-sm-6 light-and-title text-center'>" +
-            "<div class='orb'>" +
-                "<i class='fa fa-lightbulb-o fa-2 light-bulb' aria-hidden='true'></i>" +
-            "</div>" +
+                "<div class='orb'>" +
+                    "<i class='fa fa-lightbulb-o fa-2 light-bulb' aria-hidden='true'></i>" +
+                "</div>" +
                 "<div class='light-title'>" + this.name + "</div>" +
+                "<button type='button' class='apply-button btn btn-primary'>Apply</button>" +
             "</div>" +
 
             "<div class='col-sm-3'>" +
@@ -68,7 +39,6 @@ function uiLight(obj){
         setState(light.id, { power: power });
     });
 }
-
 
 uiLight.prototype.setObj = function(obj){
     this.obj = obj;

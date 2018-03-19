@@ -26,14 +26,24 @@ $(document).ready(function(){
 function colorPickerChange(light){
     var lightBulb = $(this).closest('.light-holder').find('.light-bulb');
     if (!$(light).hasClass()) light = this;
+    $(this).closest('.light-holder').find('.apply-button').show();
 
     var hue = $(light).slider("value"); //hue
     var max = $(light).slider("option", "max");
     //console.log(hue)
     //return;
     var rgb = hsvtorgb(hue,1,1);
-    lightBulb.css('color', '#' +  fullColorHex(rgb[0],rgb[1],rgb[2]))
+    var hex = '#' + fullColorHex(rgb[0],rgb[1],rgb[2]);
+    lightBulb.css('color', hex)
+    return hex;
 }
+
+$('body').on('click', '.apply-button', function(){
+    var light = lights[$(this).closest('.light-holder').prop('id')];
+    console.log(light)
+    console.log(light)
+    setState(light.id, { color: $(this).closest('.light-holder').find('.orb').css('color') });
+});
 
 function lightnessPickerChange(light){
     var lightBulb = $(this).parent('.light-holder').find('.light-bulb');
