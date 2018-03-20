@@ -48,6 +48,7 @@ uiLight.prototype.setObj = function(obj){
 uiLight.prototype.updateUI = function(){
     this.updateColor();
     this.updateGlow();
+    $('#' + this.id).find('i.fa').css('color','white');
 };
 
 uiLight.prototype.updateColor = function(){

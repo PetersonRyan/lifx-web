@@ -7,6 +7,7 @@ function setState(selector, states){
         var lightList = new Object();
 
         //For each light in the returned string
+
         $.each(data.results, function(k,v){
             if (v.status != "ok") return; //Status must be ok before continuing
             var obj = lights[v.id].obj; //Selects the light for that specific one
@@ -17,7 +18,15 @@ function setState(selector, states){
                         lights[selector].setObj(obj);
                         break;
                     case 'color':
-                        obj.
+                        console.log(data)
+                        getLights(selector, function(lightsData){
+                            console.log(lightsData)
+                            $.each(JSON.parse(lightsData), function(){
+                                console.log(lights[this.id]);
+                                lights[this.id].obj.color = this.color
+                                lights[this.id].updateUI();
+                            });
+                        });
                         //TODO
                         break;
                     case 'brightness':
