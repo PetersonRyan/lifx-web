@@ -42,7 +42,10 @@ $('body').on('click', '.apply-button', function(){
     var light = lights[$(this).closest('.light-holder').prop('id')];
     console.log(light)
     console.log(light)
-    setState(light.id, { color: $(this).closest('.light-holder').find('.orb').css('color') });
+    var rgb = $(this).closest('.light-holder').find('.orb i').css('color').toString().substring(4);
+    rgb = JSON.parse('[' + rgb.substring(0,rgb.length-1) + ']');
+    setState(light.id, { color: fullColorHex(rgb[0],rgb[1],rgb[2])});
+    $(this).hide();
 });
 
 function lightnessPickerChange(light){
