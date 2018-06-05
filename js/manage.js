@@ -52,8 +52,6 @@ function initiate(lightJSON){
             console.log(k);
             console.log(v);
             lights[v.id] = new uiLight(v);
-            v.id = v.id + 'a';
-            lights[v.id] = new uiLight(v);
         });
         lightsLoaded = true;
     }
