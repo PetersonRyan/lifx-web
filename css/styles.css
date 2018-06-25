@@ -1,5 +1,6 @@
 body {
-  background-color: #111111; }
+  background-color: #111111;
+}
 
 .color-picker {
   width: 300px;
@@ -14,7 +15,8 @@ body {
   background: -o-linear-gradient(left, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #00ff11 35%, #00ffdd 53%, #00bbff 62%, #1e00ff 71%, #6600ff 78%, #7700ff 84%, #b700ff 91%, red 99%, red 100%);
   background: -ms-linear-gradient(left, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #00ff11 35%, #00ffdd 53%, #00bbff 62%, #1e00ff 71%, #6600ff 78%, #7700ff 84%, #b700ff 91%, red 99%, red 100%);
   background: linear-gradient(to right, #ff2600 0%, #ff8400 7%, #fff200 13%, #c4ff00 20%, #91ff00 27%, #00ff11 35%, #00ffdd 53%, #00bbff 62%, #1e00ff 71%, #6600ff 78%, #7700ff 84%, #b700ff 91%, red 99%, red 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff2600', endColorstr='#ff0000', GradientType=1 ); }
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff2600", endColorstr="#ff0000", GradientType=1 );
+}
 
 .color-picker .ui-slider-handle {
   height: 28px;
@@ -22,14 +24,17 @@ body {
   background: rgba(128, 128, 128, 0.7);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
-  border-radius: 50%; }
+  border-radius: 50%;
+}
 
 .color-picker .ui-slider-range {
-  background: rgba(0, 0, 0, 0); }
+  background: rgba(0, 0, 0, 0);
+}
 
 .no-shadow {
   border-color: rgba(126, 239, 104, 0);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0) inset, 0 0 8px rgba(126, 239, 104, 0);
-  outline: 0 none; }
+  outline: 0 none;
+}
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=file:///C:/Users/peter/Documents/GitHub/lifx-web/css/styles.css.map */
