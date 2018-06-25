@@ -11,6 +11,7 @@ function uiLight(obj){
         "<div class='row'>" +
             "<div class='col-sm-3'>" +
                 "<div class='lightness-picker'></div>" +
+                "<p class='lightness-percent'><span class='percent-span'>" + Math.round(this.obj.brightness * 100) + "</span>%</p>" +
             "</div>" +
 
             "<div class='col-sm-6 light-and-title text-center'>" +

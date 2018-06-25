@@ -1,13 +1,16 @@
 .light-holder {
   margin: 5px auto;
   position: relative;
-  width: 100px; }
+  width: 100px;
+}
 
 .light-holder .light-title {
   text-align: center;
   padding: 5px;
   margin-top: 20px;
-  color: white; }
+  color: white;
+  cursor: pointer;
+}
 
 .light-holder .orb {
   height: 100px;
@@ -20,21 +23,32 @@
   text-align: center;
   vertical-align: middle;
   font-size: 60px;
-  margin-top: 16px; }
+  margin-top: 16px;
+}
 
 .orb {
-  display: inline-block; }
+  display: inline-block;
+}
 
 .apply-button {
-  display: none; }
+  display: none;
+}
 
 .col-md-4 {
-  text-align: center; }
+  text-align: center;
+}
 
 .color-picker {
-  display: none; }
+  display: none;
+}
 
 .light-title:active .color-picker, .light-title:focus .color-picker, .light-title:hover .color-picker {
-  display: block; }
+  display: block;
+}
 
-/*# sourceMappingURL=lightStyle.css.map */
+.lightness-picker {
+  float: left;
+  margin-right: 10px;
+}
+
+/*# sourceMappingURL=file:///C:/Users/peter/Documents/GitHub/lifx-web/css/lightStyle.css.map */
