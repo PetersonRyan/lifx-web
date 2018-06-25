@@ -34,7 +34,7 @@ function colorPickerChange(light){
     //return;
     var rgb = hsvtorgb(hue,1,1);
     var hex = '#' + fullColorHex(rgb[0],rgb[1],rgb[2]);
-    lightBulb.css('color', hex)
+    lightBulb.css('color', hex);
     return hex;
 }
 
@@ -48,8 +48,33 @@ $('body').on('click', '.apply-button', function(){
     $(this).hide();
 });
 
+function setBrightness(light, brightness){
+
+}
+
 function lightnessPickerChange(light){
-    var lightBulb = $(this).parent('.light-holder').find('.light-bulb');
+    var id;
+    var lightBulb = $(this).closest('.light-holder').find('.light-bulb');
+    id = $(this).closest('.light-holder').prop('id');
+    if (!$(light).hasClass()) light = this;
+    $(this).closest('.light-holder').find('.apply-button').show();
+    var value = $(light).slider("value");
+    var max = $(light).slider("option", "max");
+    value = value/max;
+
+    var currentColor = lightBulb.css('color');
+    if (currentColor[0] == 'r' && currentColor.includes('rgb')){
+        currentColor = JSON.parse('[' + currentColor.replace(/rgb\(/g,'').replace(/\)/g,'') + ']');
+        currentColor = fullColorHex(currentColor[0], currentColor[1], currentColor[2]);
+    }
+
+    var currentBrightness = lights[id].obj.brightness;
+    var differenceInBrightness = value - currentBrightness;
+
+console.log(differenceInBrightness * 255);
+
+    lightBulb.css('color', LightenDarkenColor('#' + currentColor, differenceInBrightness * 255));
+
 }
 
 function hsvtorgb(h, s, v){
@@ -94,3 +119,30 @@ var fullColorHex = function(r,g,b) {
     var blue = rgbToHex(b);
     return red+green+blue;
 };
+
+function LightenDarkenColor(col,amt) {
+    var usePound = false;
+    if ( col[0] == "#" ) {
+        col = col.slice(1);
+        usePound = true;
+    }
+
+    var num = parseInt(col,16);
+
+    var r = (num >> 16) + amt;
+
+    if ( r > 255 ) r = 255;
+    else if  (r < 0) r = 0;
+
+    var b = ((num >> 8) & 0x00FF) + amt;
+
+    if ( b > 255 ) b = 255;
+    else if  (b < 0) b = 0;
+
+    var g = (num & 0x0000FF) + amt;
+
+    if ( g > 255 ) g = 255;
+    else if  ( g < 0 ) g = 0;
+
+    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+}
